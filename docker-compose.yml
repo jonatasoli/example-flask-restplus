@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./app:/app:Z
+    command: ['sh', '-c', 'flask run']
+    environment:
+    - DOCKER_CONFIG=True
+    - PARTYOU_CONFIG=docker_config_local
+    - FLASK_APP=core
+    - FLASK_ENV=development
+    tty: true
